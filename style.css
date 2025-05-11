@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 0;
+}
+
+.controls {
+    padding: 15px;
+    background: #ddd;
+}
+
+.controls select,
+.controls button,
+.controls input {
+    margin: 0 5px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+#legend {
+    margin: 10px;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
+
+.legend-item.red {
+    background-color: red;
+}
+
+.legend-item.green {
+    background-color: green;
+}
+
+#metrics {
+    margin: 10px;
+    font-weight: bold;
+    color: #222;
+}
+
+#array-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #333;
+    background-color: white;
+}
+
+.bar {
+    background-color: blue;
+    margin: 0 1px;
+    transition: height 0.2s, background-color 0.2s;
+}
