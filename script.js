@@ -161,6 +161,7 @@ async function heapify(n, i) {
 
 // Optional: Compare all algorithms side by side (simplified)
 async function compareAlgorithms() {
+    toggleControls(true);
     const algos = ["bubble", "selection", "insertion", "merge", "quick", "heap"];
     const times = [];
     const original = [...array];
@@ -183,6 +184,7 @@ async function compareAlgorithms() {
     document.getElementById("metrics").textContent = "Compare: " + times.join(" | ");
     array = [...original];
     updateBars();
+    toggleControls(false);
 }
 
 // Init
