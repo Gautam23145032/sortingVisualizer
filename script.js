@@ -1,8 +1,12 @@
 let array = [];
+let originalArray = [];
+let isPaused = false;
+let isSorting = false;
 
 function generateArray() {
-    let size = document.getElementById("arraySize").value;
+    const size = document.getElementById("arraySize").value;
     array = Array.from({ length: size }, () => Math.floor(Math.random() * 300) + 10);
+    originalArray = [...array];
     updateBars();
 }
 
@@ -25,12 +29,20 @@ function updateBars(highlight = []) {
     return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-function toggleControls(disabled) {
-    document.querySelectorAll("button, select, input").forEach(el => el.disabled = disabled);
+function toggleControls(disable) {
+    const keepEnabled = ["Play", "Pause", "Restart"];
+    document.querySelectorAll("button, select, input").forEach(el => {
+        const keep = keepEnabled.some(label => el.textContent.includes(label));
+        el.disabled = disable && !keep;
+    });
 }
 
 async function startSorting() {
+    if (isSorting) return;
+    isSorting = true;
+    isPaused = false;
     toggleControls(true);
+
     const algo = document.getElementById("algorithm").value;
     const start = performance.now();
 
@@ -46,8 +58,19 @@ async function startSorting() {
     const end = performance.now();
     markSorted();
     showTime(end - start);
+    isSorting = false;
     toggleControls(false);
 }
+
+function pauseSorting() {
+    isPaused = true;
+}
+
+function resumeSorting() {
+    isPaused = false;
+}
+
+
 
 function showTime(ms) {
     document.getElementById("metrics").textContent = `Time taken: ${ms.toFixed(2)} ms`;
@@ -57,10 +80,17 @@ function markSorted() {
     document.querySelectorAll(".bar").forEach(bar => bar.style.backgroundColor = "green");
 }
 
-// Sorting Algorithms (Same as your code, abbreviated here for space)
+async function waitWhilePaused() {
+    while (isPaused) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
+}
+
+// Sorting Algorithms
 async function bubbleSort() {
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = 0; j < array.length - i - 1; j++) {
+            await waitWhilePaused();
             if (array[j] > array[j + 1]) {
                 [array[j], array[j + 1]] = [array[j + 1], array[j]];
             }
@@ -73,6 +103,7 @@ async function selectionSort() {
     for (let i = 0; i < array.length; i++) {
         let min = i;
         for (let j = i + 1; j < array.length; j++) {
+            await waitWhilePaused();
             if (array[j] < array[min]) min = j;
             await updateBars([i, j]);
         }
@@ -86,6 +117,7 @@ async function insertionSort() {
         let key = array[i];
         let j = i - 1;
         while (j >= 0 && array[j] > key) {
+            await waitWhilePaused();
             array[j + 1] = array[j];
             j--;
             await updateBars([j, j + 1]);
@@ -109,11 +141,20 @@ async function merge(l, m, r) {
     let i = 0, j = 0, k = l;
 
     while (i < left.length && j < right.length) {
+        await waitWhilePaused();
         array[k++] = left[i] <= right[j] ? left[i++] : right[j++];
         await updateBars([k - 1]);
     }
-    while (i < left.length) array[k++] = left[i++], await updateBars([k - 1]);
-    while (j < right.length) array[k++] = right[j++], await updateBars([k - 1]);
+    while (i < left.length) {
+        await waitWhilePaused();
+        array[k++] = left[i++];
+        await updateBars([k - 1]);
+    }
+    while (j < right.length) {
+        await waitWhilePaused();
+        array[k++] = right[j++];
+        await updateBars([k - 1]);
+    }
 }
 
 async function quickSort(l, r) {
@@ -127,6 +168,7 @@ async function partition(l, r) {
     const pivot = array[r];
     let i = l;
     for (let j = l; j < r; j++) {
+        await waitWhilePaused();
         if (array[j] < pivot) {
             [array[i], array[j]] = [array[j], array[i]];
             await updateBars([i, j]);
@@ -142,6 +184,7 @@ async function heapSort() {
     let n = array.length;
     for (let i = Math.floor(n / 2) - 1; i >= 0; i--) await heapify(n, i);
     for (let i = n - 1; i > 0; i--) {
+        await waitWhilePaused();
         [array[0], array[i]] = [array[i], array[0]];
         await updateBars([0, i]);
         await heapify(i, 0);
@@ -153,13 +196,14 @@ async function heapify(n, i) {
     if (l < n && array[l] > array[largest]) largest = l;
     if (r < n && array[r] > array[largest]) largest = r;
     if (largest !== i) {
+        await waitWhilePaused();
         [array[i], array[largest]] = [array[largest], array[i]];
         await updateBars([i, largest]);
         await heapify(n, largest);
     }
 }
 
-// Optional: Compare all algorithms side by side (simplified)
+// Compare All Algorithms
 async function compareAlgorithms() {
     toggleControls(true);
     const algos = ["bubble", "selection", "insertion", "merge", "quick", "heap"];
@@ -187,5 +231,5 @@ async function compareAlgorithms() {
     toggleControls(false);
 }
 
-// Init
+// Initialize
 generateArray();
