@@ -16,6 +16,10 @@ h1 {
 .controls {
     padding: 15px;
     background: #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }
 
 .controls select,
