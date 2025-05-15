@@ -18,11 +18,14 @@
         </select>
         <button onclick="generateArray()">Generate New Array</button>
         <button onclick="startSorting()">Start Sorting</button>
+        <button onclick="resumeSorting()">Play</button>
+        <button onclick="pauseSorting()">Pause</button>
+        
         <button onclick="compareAlgorithms()">Compare All</button>
-        <label>Bars: 
+        <label>Bars:
             <input type="range" id="arraySize" min="10" max="100" value="50" oninput="generateArray()">
         </label>
-        <label>Speed: 
+        <label>Speed:
             <input type="range" id="speed" min="10" max="990" value="200">
         </label>
     </div>
