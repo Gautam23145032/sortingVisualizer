@@ -1,69 +1,68 @@
-🔢 Sorting Visualizer
-A dynamic and interactive web-based Sorting Visualizer built with HTML, CSS, and JavaScript.
-This project visualizes various sorting algorithms in action, helping learners and developers
-understand how sorting works through animation and comparison.
+# Sorting Visualizer 🧠📊
 
-🚀 Features
-Visualize popular sorting algorithms:
+A beautiful and interactive web application that visualizes how various sorting algorithms work step-by-step. Built with **HTML**, **CSS**, and **JavaScript**, this tool is perfect for understanding and comparing sorting algorithms like Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, and Heap Sort.
+# Live Demo
+[click here](https://gautam23145032.github.io/sortingVisualizer/)
 
-Bubble Sort
+## 🌟 Features
 
-Selection Sort
+- 🎞️ **Step-by-step visualization** of each algorithm  
+- ⏸️ **Pause and Play controls** for better understanding  
+- 🎯 **Compare All** feature to benchmark algorithms  
+- 🔧 Adjustable **array size** and **sorting speed**  
+- 📊 **Real-time metrics** showing time taken  
+- 📱 Responsive UI with modern styling  
 
-Insertion Sort
+## 🛠️ Technologies Used
 
-Merge Sort
+- HTML5  
+- CSS3 (Flexbox for layout)  
+- JavaScript (ES6+)  
 
-Quick Sort
+## 🚀 How to Run Locally
 
-Heap Sort
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/sorting-visualizer.git
+   ```
 
-Adjust array size and sorting speed
+2. Navigate into the project directory:
+   ```bash
+   cd sorting-visualizer
+   ```
 
-Generate new arrays on demand
+3. Open `index.html` in your browser:
+   ```bash
+   # macOS
+   open index.html
 
-Highlight comparisons and sorted elements
+   # Windows
+   start index.html
+   ```
 
-One-click "Compare All" feature to benchmark all algorithms
+✅ **No dependencies or build tools required. Just open and use.**
 
-Clean, responsive UI
+## 📸 Screenshots
 
-📸 Demo
+*Add screenshots here to showcase your visualizer in action.*
 
-🛠️ Technologies Used
-HTML5 – Structure and layout
+## 📚 Supported Algorithms
 
-CSS3 – Styling and responsive design
+- ✅ Bubble Sort  
+- ✅ Selection Sort  
+- ✅ Insertion Sort  
+- ✅ Merge Sort  
+- ✅ Quick Sort  
+- ✅ Heap Sort  
 
-JavaScript (ES6) – Core logic and animations
+## 🙌 Contributing
 
-📂 Folder Structure
-bash
-Copy code
-.
-├── index.html        # Main HTML file
-├── style.css         # Styling for UI
-└── script.js         # Logic and sorting algorithms
-🧠 How It Works
-Each sorting algorithm is implemented as an async function to allow visual animations with delays between operations.
-Bars representing array elements are dynamically generated and updated during the sort.
+Feel free to fork the repo and submit pull requests. Bug fixes, feature improvements, and enhancements are welcome!
 
-💡 Getting Started
-Run Locally
-Clone the repository:
+## 📄 License
 
-bash
-Copy code
-git clone https://github.com/yourusername/sorting-visualizer.git
-Open index.html in your browser.
+This project is open-source and available under the [MIT License](LICENSE).
 
-No dependencies or setup required.
+---
 
-🎯 Future Enhancements
-Add more sorting algorithms (e.g., Radix Sort, Shell Sort)
-
-Display number of comparisons and swaps
-
-Allow step-by-step execution
-
-Add theme toggle (light/dark)
+Made with 💙 by [Gautam23145032](https://github.com/Gautam23145032)
