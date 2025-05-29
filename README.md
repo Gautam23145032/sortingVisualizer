@@ -44,7 +44,8 @@ A beautiful and interactive web application that visualizes how various sorting 
 
 ## 📸 Screenshots
 
-*Add screenshots here to showcase your visualizer in action.*
+![image](https://github.com/user-attachments/assets/27b90f7d-f477-4aad-b143-9c6a72a036fb)
+
 
 ## 📚 Supported Algorithms
 
